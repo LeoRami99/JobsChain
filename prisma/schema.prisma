@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  wallet_id String  @id @unique 
+  email String  @unique
+  name  String
+  last_name String
+  phone String
+  type String
+  company String
+  applications Application[]
+  offers JobOffer[]
+  certificates Certificate[]
+  titles Title[]
+  experiences Experience[]
+}
+
+model JobOffer { 
+  id          Int         @id @default(autoincrement())
+  title       String
+  description String
+  createdAt   DateTime    @default(now())
+  published   Boolean     @default(false)
+  author     User        @relation(fields: [authorId], references: [wallet_id])
+  authorId    String
+  categories  Category[]  
+  applications Application[]
+  salary String
+  location String
+  habilities Hability[]
+  requiredScore Int
+}
+
+model Category {
+  id    Int    @id @default(autoincrement())
+  name  String
+  JobOffers JobOffer[] 
+}
+model Hability {
+  id    Int    @id @default(autoincrement())
+  name  String
+  JobOffers JobOffer[] 
+}
+
+model Application {
+  id          Int        @id @default(autoincrement())
+  createdAt   DateTime   @default(now())
+  user        User       @relation(fields: [userId], references: [wallet_id])
+  userId      String
+  jobOffer    JobOffer   @relation(fields: [jobOfferId], references: [id])
+  jobOfferId  Int
+}
+
+model Certificate {
+  id          Int        @id @default(autoincrement())
+  name         String
+  organization String
+  date         DateTime
+  description  String 
+  user        User       @relation(fields: [userId], references: [wallet_id])
+  userId      String
+  level       String
+}
+
+model Experience {
+  id          Int        @id @default(autoincrement())
+  organization String
+  dateStart         DateTime
+  dateEnd       DateTime
+  description  String 
+  user        User       @relation(fields: [userId], references: [wallet_id])
+  userId      String
+  position    String
+}
+
+model Title {
+  id          Int        @id @default(autoincrement())
+  name         String
+  institution String
+  dateStart         DateTime
+  dateEnd         DateTime
+  description  String 
+  user        User       @relation(fields: [userId], references: [wallet_id])
+  userId      String
+  level       String
+}
+
