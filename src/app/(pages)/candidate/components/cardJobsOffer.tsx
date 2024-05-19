@@ -2,13 +2,13 @@
 interface cardOfferJobsProps {
 	id: number;
 	title: string;
-	company: string;
+	company?: string;
 	description: string;
 	salary: string;
 	location: string;
-	habilitys: string[];
+	habilitys: any[];
 	score?: number;
-	categorys: string[];
+	categorys: any[];
 }
 const openModal = (id: string) => {
 	const modal: any = document.getElementById(id);
@@ -17,7 +17,8 @@ const openModal = (id: string) => {
 
 import { FaBuilding, FaDollarSign, FaMapMarkerAlt, FaStar, FaWrench, FaTags } from "react-icons/fa";
 
-const CardOfferJobs = ({ id, title, description, company, salary, location, habilitys, score, categorys }: cardOfferJobsProps) => {
+const CardOfferJobs = ({ id, title, description, salary, location, habilitys, score, categorys }: cardOfferJobsProps) => {
+	console.log({ id, title, description, salary, location, habilitys, score, categorys });
 	return (
 		<div className="w-[600px] bg-base-100 border p-10 m-4 rounded-3xl flex flex-col hover:shadow-2xl transition-shadow duration-300">
 			<div className="flex flex-col mb-4">
@@ -28,7 +29,7 @@ const CardOfferJobs = ({ id, title, description, company, salary, location, habi
 						<div className="flex flex-wrap gap-1">
 							{categorys.map((category, index) => (
 								<span key={index} className="badge badge-secondary text-xs">
-									{category}
+									{category.name}
 								</span>
 							))}
 						</div>
@@ -42,10 +43,10 @@ const CardOfferJobs = ({ id, title, description, company, salary, location, habi
 							<span className="text-sm">Puntuación: </span>
 							<span className="text-sm font-semibold ml-1">{score}</span>
 						</div>
-						<div className="flex items-center">
+						{/* <div className="flex items-center">
 							<FaBuilding className="text-blue-500 mr-1" />
 							<p className="text-sm">{company}</p>
-						</div>
+						</div> */}
 						<div className="flex items-center">
 							<FaDollarSign className="text-green-500 mr-1" />
 							<p className="text-sm">{salary}</p>
@@ -65,7 +66,7 @@ const CardOfferJobs = ({ id, title, description, company, salary, location, habi
 				<div className="flex flex-wrap gap-1 mb-4">
 					{habilitys.map((hability, index) => (
 						<span key={index} className="badge badge-primary text-xs">
-							{hability}
+							{hability.name}
 						</span>
 					))}
 				</div>

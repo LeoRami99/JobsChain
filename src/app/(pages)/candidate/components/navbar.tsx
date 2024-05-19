@@ -18,8 +18,8 @@ const Navbar = () => {
 	return (
 		<div className="navbar bg-[#ffffff] z-[100] shadow-lg top-0 sticky rounded-xl">
 			<div className="flex-1">
-				<a className="btn btn-ghost text-xl">
-					<img src="../JobsChain.png" alt="JobsChain Logo" className="rounded-xl w-[50px]" />
+				<a className="btn btn-ghost text-xl" href="/candidate/home/">
+					<img src="../JobsChain.svg" alt="JobsChain Logo" className="rounded-xl w-[50px]" />
 				</a>
 			</div>
 			<div className="flex-none gap-2">
@@ -33,16 +33,13 @@ const Navbar = () => {
 						</div>
 						<ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
 							<li>
-								<a className="justify-between">
+								<a
+									className="justify-between"
+									href="
+									/candidate/profile
+								">
 									Profile
-									<span className="badge">New</span>
 								</a>
-							</li>
-							<li>
-								<a>Settings</a>
-							</li>
-							<li>
-								<a>Logout</a>
 							</li>
 						</ul>
 					</div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Exo_2 } from "next/font/google";
 import "./globals.css";
 import ProviderWallet from "@/app/walletProvider";
+import { Toaster } from "react-hot-toast";
 
 const inter = Exo_2({ subsets: ["latin"] });
 
@@ -18,7 +19,10 @@ export default function RootLayout({
 	return (
 		<html lang="es">
 			<body className={inter.className} data-theme="light">
-				<ProviderWallet>{children}</ProviderWallet>
+				<ProviderWallet>
+					<Toaster />
+					{children}
+				</ProviderWallet>
 			</body>
 		</html>
 	);

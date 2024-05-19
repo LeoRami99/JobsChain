@@ -12,6 +12,7 @@
     "@prisma/client": "^5.14.0",
     "@rainbow-me/rainbowkit": "^2.1.0",
     "@tanstack/react-query": "^5.37.1",
+    "axios": "^1.6.8",
     "ethers": "^6.12.1",
     "next": "14.2.3",
     "react": "^18.3.1",

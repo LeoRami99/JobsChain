@@ -22,7 +22,7 @@ const ProviderWallet = ({ children }: propsProvider) => {
 	return (
 		<WagmiProvider config={config}>
 			<QueryClientProvider client={queryClient}>
-				<RainbowKitProvider coolMode>{children}</RainbowKitProvider>
+				<RainbowKitProvider>{children}</RainbowKitProvider>
 			</QueryClientProvider>
 		</WagmiProvider>
 	);
